@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BerlinClock.iml" filepath="$PROJECT_DIR$/.idea/modules/BerlinClock.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BerlinClock_main.iml" filepath="$PROJECT_DIR$/.idea/modules/BerlinClock_main.iml" group="BerlinClock" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BerlinClock_test.iml" filepath="$PROJECT_DIR$/.idea/modules/BerlinClock_test.iml" group="BerlinClock" />
+    </modules>
+  </component>
+</project>
