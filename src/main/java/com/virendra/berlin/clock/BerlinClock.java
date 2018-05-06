@@ -4,6 +4,8 @@ import com.virendra.berlin.clock.exception.BerlinClockException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Scanner;
+
 import static com.virendra.berlin.clock.validation.NumberValidator.numberRangeCheck;
 import static com.virendra.berlin.clock.validation.NumberValidator.validate;
 
@@ -18,6 +20,15 @@ public class BerlinClock implements TimeConverter {
     private static final int ELEVEN = 11;
 
     private static final int FIVE = 5;
+
+    public static void main(String[] args) throws Exception {
+        TimeConverter tc = new BerlinClock();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the string : Input format hh:mm:ss");
+        String input = scanner.next();
+        System.out.println("Converted time for input :{} " + input);
+        System.out.println(tc.convertTime(input));
+    }
 
     @Override
     public String convertTime(String aTime) {
