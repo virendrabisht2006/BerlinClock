@@ -12,16 +12,19 @@ first row every lamp represents 5 minutes. In this first row the 3rd, 6th and 9t
 quarter, half and last quarter of an hour. The other lamps are yellow. In the last row with 4 lamps every lamp
 represents 1 minute.
 
-One can be seen [here](http://uniqueclocks.co.uk/media/berlin~clock.jpg~1.gif)
+One can be seen [here](https://en.wikipedia.org/wiki/Mengenlehreuhr)
 
-## The brief
+## Solution:
+I tried to make solution simple as possible using TDD. Solution has BerlinClock.java main program, which has main method. One can run this program,
+which will ask for input string and covert a string to Time as per perlin clock and will print output in console.
+A valid input format (hh:mm:ss). Example: 00:00:00
 
-We have created a number of acceptance tests for the Berlin Clock and your challenge is to get them passing.
+A sample output would be:
 
-## Some hints
-If you are new to Gradle, it may be worth spending 10 minutes reading a high level summary.  We are using the Gradle
-Wrapper so `gradlew` from the command line should download everything you need.  Most modern IDEs support Gradle projects.
+Y
+OOOO
+OOOO
+OOOOOOOOOOO
+OOOO
 
-The use of JBehave in this instance is to provide you with our definition of done for the task.
-
-Please ensure that you are familiar with our values in the instructions project.  They are important to us.
+In case of invalid or null input, program will throw BerlinCLockException
