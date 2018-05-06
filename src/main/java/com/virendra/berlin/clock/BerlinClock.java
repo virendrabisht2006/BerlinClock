@@ -21,6 +21,8 @@ public class BerlinClock implements TimeConverter {
 
     @Override
     public String convertTime(String aTime) {
+        LOG.info("About to convert time for input text: {}", aTime);
+
         if (null == aTime) {
             LOG.error("Can not convert input time as input is null");
             throw new BerlinClockException("Can not convert input time as input is null");
@@ -35,10 +37,7 @@ public class BerlinClock implements TimeConverter {
     }
 
     private String convertHour(String hours) {
-
-        if (!validate(hours) || !numberRangeCheck(hours)) {
-            throw new BerlinClockException("Input String should only contain a valid number. Between 00-59");
-        }
+        inputStringValidator(hours);
         int hour = Integer.parseInt(hours);
         StringBuilder sb = new StringBuilder();
 
@@ -61,25 +60,8 @@ public class BerlinClock implements TimeConverter {
         return sb.toString();
     }
 
-    private String constructOnOffLampHour(int times, int size) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 1; i <= times; i++) {
-            sb.append("R");
-        }
-        if (times < size) {
-            for (int i = times; i < size; i++) {
-                sb.append("O");
-            }
-        }
-        return sb.toString();
-    }
-
     private String convertMinutes(String minutes) {
-
-        if (!validate(minutes) || !numberRangeCheck(minutes)) {
-            throw new BerlinClockException("Input String should only contain a valid number. Between 00-59");
-        }
-
+        inputStringValidator(minutes);
         int minute = Integer.parseInt(minutes);
 
         StringBuilder sb = new StringBuilder();
@@ -100,8 +82,19 @@ public class BerlinClock implements TimeConverter {
             sb.append(constructOnOffLampForMinute(0, ELEVEN)).append("\n");
             sb.append(constructOnOffLampForMinute(minute, FOUR));
         }
+        return sb.toString();
+    }
 
-
+    private String constructOnOffLampHour(int times, int size) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= times; i++) {
+            sb.append("R");
+        }
+        if (times < size) {
+            for (int i = times; i < size; i++) {
+                sb.append("O");
+            }
+        }
         return sb.toString();
     }
 
@@ -122,15 +115,19 @@ public class BerlinClock implements TimeConverter {
     }
 
     private String isTopLampOn(String str) {
-
-        if (!validate(str) || !numberRangeCheck(str)) {
-            throw new BerlinClockException("Input String should only contain a valid number. Between 00-59");
-        }
+        inputStringValidator(str);
 
         int num = Integer.parseInt(str);
         if (num == 0 || num % 2 == 0) {
             return "Y";
         }
         return "O";
+    }
+
+    private void inputStringValidator(String str) {
+        if (!validate(str) || !numberRangeCheck(str)) {
+            LOG.error("Input String is not valid, a valid input should contain only number seperated by : and number should be in range between 00 to 59");
+            throw new BerlinClockException("Input String should only contain a valid number. Between 00-59");
+        }
     }
 }
